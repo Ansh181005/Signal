@@ -36,7 +36,7 @@ export function Logo({ size = "md", showText = true, className = "" }: LogoProps
         
         <img
           src="/smart-logo-white.png"
-          alt="Smart Failure Detection"
+          alt="Signal"
           className={`relative z-10 object-contain drop-shadow-[0_0_10px_rgba(245,158,11,0.35)] transition-transform duration-300 group-hover:scale-105 ${imgSizes[size]}`}
         />
       </div>
@@ -44,7 +44,7 @@ export function Logo({ size = "md", showText = true, className = "" }: LogoProps
       {/* Brand Name Text */}
       {showText && (
         <span className={`font-display font-bold tracking-tight text-[color:var(--foreground)] ${textSizes[size]}`}>
-          Smart Failure Detection
+          Signal
         </span>
       )}
     </div>

@@ -89,13 +89,13 @@ export const Route = createFileRoute("/project-input")({
   },
   head: () => ({
     meta: [
-      { title: "Project Input — Smart Failure Detection" },
+      { title: "Project Input — Signal" },
       {
         name: "description",
         content:
           "Submit your startup details for an instant market, competitor, and risk analysis.",
       },
-      { property: "og:title", content: "Project Input — Smart Failure Detection" },
+      { property: "og:title", content: "Project Input — Signal" },
       {
         property: "og:description",
         content:
@@ -1065,4 +1065,3 @@ function EnhancedRiskEngineView({ risks, overallRisk }: { risks: import("@/lib/a
     </div>
   );
 }
-

@@ -25,6 +25,20 @@ export function EnhancedSuggestionsView({ analysis }: EnhancedSuggestionsViewPro
 
   const rawSuggestions: SuggestionItem[] = analysis.suggestions || [];
   const langgraphInfo = analysis.langgraphWorkflow;
+  const riskMitigationSuggestions: SuggestionItem[] = analysis.risks.map((risk) => ({
+    type: "risk",
+    category: `${risk.category} Risk`,
+    title: `${risk.category} Risk Mitigation`,
+    advice: risk.mitigation || risk.note,
+    priority:
+      risk.severity === "critical" || risk.severity === "high"
+        ? "high"
+        : risk.severity === "low"
+          ? "low"
+          : "medium",
+    timeframe: risk.timeframe,
+    steps: risk.steps,
+  }));
 
   const subTabs = [
     { id: "all", label: "All Guidance" },
@@ -36,7 +50,7 @@ export function EnhancedSuggestionsView({ analysis }: EnhancedSuggestionsViewPro
 
   // Filter suggestions by active subtab
   const currentSuggestions = useMemo(() => {
-    if (activeSubTab === "all") return rawSuggestions;
+    if (activeSubTab === "all") return [...rawSuggestions, ...riskMitigationSuggestions];
     if (activeSubTab === "mitigations") return [];
     
     return rawSuggestions.filter((item) => {
@@ -46,7 +60,7 @@ export function EnhancedSuggestionsView({ analysis }: EnhancedSuggestionsViewPro
       if (activeSubTab === "risk_defense") return cat.includes("risk");
       return true;
     });
-  }, [rawSuggestions, activeSubTab]);
+  }, [rawSuggestions, riskMitigationSuggestions, activeSubTab]);
 
   return (
     <div className="space-y-4 w-full min-w-0">

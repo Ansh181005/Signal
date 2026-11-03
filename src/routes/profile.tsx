@@ -9,10 +9,10 @@ import { getCurrentUser, listProjects } from "@/lib/local-api";
 export const Route = createFileRoute("/profile")({
   head: () => ({
     meta: [
-      { title: "Profile | Smart Failure Detection" },
+      { title: "Profile | Signal" },
       {
         name: "description",
-        content: "View your Smart Failure Detection workspace profile and analysis history.",
+        content: "View your Signal workspace profile and analysis history.",
       },
     ],
   }),

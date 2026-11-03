@@ -9,7 +9,7 @@ import { Logo } from "@/components/logo";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Sign in | Smart Failure Detection" },
+      { title: "Sign in | Signal" },
       { name: "description", content: "Sign in to save and revisit your project analyses." },
     ],
   }),

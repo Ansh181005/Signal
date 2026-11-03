@@ -257,7 +257,7 @@ async function main() {
       const body = await readJson(req);
 
       if (url.pathname === "/api/analyze" && req.method === "POST") {
-        const { name, industry, business_model, target_market, budget, description } = body;
+        const { name, industry, business_model, target_market, budget, currency, description } = body;
         if (!name || !industry) return sendJson(res, 400, { error: "Missing required fields for analysis" });
         console.log(`🤖 Running Gemini AI online analysis for "${name}"...`);
         const analysisData = await analyzeProjectWithGemini({
@@ -274,7 +274,7 @@ async function main() {
       if (url.pathname === "/api/projects" && req.method === "POST") {
         const user = await requireUser(req, res);
         if (!user) return;
-        const { name, industry, business_model, target_market, budget, description } = body;
+        const { name, industry, business_model, target_market, budget, currency, description } = body;
 
         console.log(`🤖 Reviewing project "${name}" online with Gemini AI...`);
         const analysisData = await analyzeProjectWithGemini({
@@ -299,6 +299,7 @@ async function main() {
           business_model,
           target_market,
           budget: Number(budget) || 0,
+          currency: currency || "USD",
           description,
           analysis_data: analysisData
         }).select().single();

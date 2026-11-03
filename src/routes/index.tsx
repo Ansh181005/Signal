@@ -5,14 +5,14 @@ import Aurora from "@/components/Aurora";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Smart Failure Detection" },
+      { title: "Signal" },
       {
         name: "description",
         content: "Review a project and get a clear view of market, competitor, and execution risk.",
       },
       {
         property: "og:title",
-        content: "Smart Failure Detection",
+        content: "Signal",
       },
       {
         property: "og:description",
@@ -65,7 +65,7 @@ function Index() {
             <div className="absolute inset-0 -z-10 rounded-full bg-amber-500/15 blur-2xl scale-125" />
             <img
               src="/smart-logo-white.png"
-              alt="Smart Failure Detection Logo"
+              alt="Signal Logo"
               className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 object-contain drop-shadow-[0_0_25px_rgba(245,158,11,0.35)] transition-transform duration-300 hover:scale-105 select-none pointer-events-none"
             />
           </div>

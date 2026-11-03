@@ -73,12 +73,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Smart Failure Detection" },
+      { title: "Signal" },
       {
         name: "description",
         content: "Evaluate project risk, market signals, and execution readiness in one workspace.",
       },
-      { property: "og:title", content: "Smart Failure Detection" },
+      { property: "og:title", content: "Signal" },
       {
         property: "og:description",
         content: "Evaluate project risk, market signals, and execution readiness in one workspace.",
