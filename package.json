@@ -89,5 +89,19 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^8.0.16"
-  }
+  },
+  "version": "1.0.0",
+  "description": "<div align=\"center\">",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryan-saini-dev/smart-failure-detection.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aryan-saini-dev/smart-failure-detection/issues"
+  },
+  "homepage": "https://github.com/aryan-saini-dev/smart-failure-detection#readme"
 }

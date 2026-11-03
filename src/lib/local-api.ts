@@ -2,15 +2,23 @@ import { createClient } from "@supabase/supabase-js";
 import type { Project } from "@/lib/analysis";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8787";
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://placeholder-project.supabase.co";
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "placeholder-anon-key";
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const SUPABASE_CONFIG_ERROR =
+  "Supabase is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to .env, then restart the frontend.";
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+// Keep client initialization safe so the page can show a useful configuration
+// error instead of a browser-level "Failed to fetch" message.
+export const supabase = createClient(
+  SUPABASE_URL || "https://placeholder-project.supabase.co",
+  SUPABASE_ANON_KEY || "placeholder-anon-key",
+  {
   auth: {
     persistSession: typeof window !== "undefined",
     autoRefreshToken: typeof window !== "undefined",
   },
-});
+  },
+);
 
 export type LocalUser = {
   id: string;
@@ -38,6 +46,8 @@ if (typeof window !== "undefined") {
 }
 
 export async function registerUser(input: { name: string; email: string; password: string }) {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) throw new Error(SUPABASE_CONFIG_ERROR);
+
   const { data, error } = await supabase.auth.signUp({
     email: input.email,
     password: input.password,
@@ -63,6 +73,8 @@ export async function registerUser(input: { name: string; email: string; passwor
 }
 
 export async function loginUser(input: { email: string; password: string }) {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) throw new Error(SUPABASE_CONFIG_ERROR);
+
   const { data, error } = await supabase.auth.signInWithPassword({
     email: input.email,
     password: input.password,
@@ -163,5 +175,4 @@ export async function analyzeProject(input: Project) {
 
   return response.json();
 }
-
 

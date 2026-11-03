@@ -40,7 +40,7 @@ function LoginPage() {
           : await registerUser({ name: name.trim(), email, password });
       // Supabase handles session storage internally
       setSubmitting(false);
-      void navigate({ to: "/profile" });
+      void navigate({ to: mode === "sign-up" ? "/" : "/profile" });
       return;
     } catch (error) {
       setSubmitting(false);

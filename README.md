@@ -389,6 +389,16 @@ VITE_SUPABASE_URL=https://your-project-id.supabase.co
 VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
 
+`VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are required for sign-in and
+account creation. Get both values from **Supabase Dashboard -> Project
+Settings -> API**. After changing `.env`, stop and restart `npm run dev`;
+Vite only loads environment variables when it starts.
+
+If the login page displays `Failed to fetch`, check these two variables first.
+That message means the browser could not reach the configured Supabase Auth
+endpoint, most commonly because the variables are missing, still contain the
+example values, or the frontend was not restarted after editing `.env`.
+
 ---
 
 ## 🚀 Quick Start
